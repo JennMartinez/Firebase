@@ -1,0 +1,16 @@
+body {
+    /* background-image: url("../images/space12.jpg"); */
+}
+
+.containers {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

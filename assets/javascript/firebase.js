@@ -14,22 +14,22 @@ var database = firebase.database();
 // Variables //
 // Values pulling and pushing from database(Firebase) //
 
-var time = "";
+var name = "";
 var destination = "";
 var firstShuttle = "";
 var frequency = "";
 
-$("#add-user").on("click", function(event) {
+$("#add-shuttle").on("click", function(event) {
     event.preventDefault();
 
 
-time = $("#time-input")
+name = $("#name-input")
     .val()
     .trim();
 destination = $("#destination-input")
     .val()
     .trim();
-firstShuttle = $("#first-input")
+firstShuttle = $("#time-input")
     .val()
     .trim();
 frequency = $("#frequency-input")
@@ -40,7 +40,7 @@ frequency = $("#frequency-input")
 // Right side is user values /
 
     database.ref().push({
-        timeFirebase: time,
+        nameFirebase: name,
         destinationFirebase: destination,
         firstShuttleFirebase: firstShuttle,
         frequencyFirebase: frequency,
@@ -48,12 +48,46 @@ frequency = $("#frequency-input")
 });
 
 database.ref().on("value", function(snapshot) {
-    console.log((snapshot.val().timeFirebase));
-    console.log((snapshot.val().destinationFirebase));
-    console.log((snapshot.val().firstShuttleFirebase));
-    console.log((snapshot.val().frequencyFirebase));
+    // console.log((snapshot.val().nameFirebase));
+    // console.log((snapshot.val().destinationFirebase));
+    // console.log((snapshot.val().firstShuttleFirebase));
+    // console.log((snapshot.val().frequencyFirebase));
 
 //   $("#rows").append(columnTd);
-$("#rows").append("<tr><td>" + (snapshot.val().timeFirebase) + "</td><td>" + (snapshot.val().destinationFirebase) 
+$("#rows").append("<tr><td>" + (snapshot.val().nameFirebase) + "</td><td>" + (snapshot.val().destinationFirebase) 
 + "</td><td>" + (snapshot.val().firstShuttleFirebase) + "</td><td>" + (snapshot.val().frequencyFirebase) + "</td></tr>");
 })
+
+var timeFrequency = 5;
+
+// The time states, 12:00 pm //
+
+var firstShuttleTime = "12:00";
+
+// Initial arrival time //
+
+var firstShuttleTimeConverted = moment(firstShuttleTime, "HH:mm").subtract(1, "years");
+console.log(firstShuttleTimeConverted);
+
+// Present Time //
+
+var presentTime = moment();
+
+// Difference between the Shuttle Times //
+
+var diffTime = moment().diff(moment(firstShuttleTimeConverted), "minutes");
+
+// Frequency of Shuttles //
+
+var timeRemaining = diffTime % timeFrequency;
+console.log(timeRemaining);
+
+// Minutes that shuttle is Away //
+
+var timeForNextShuttle = timeFrequency - timeRemaining;
+
+// Next shuttle arrival //
+
+var nextShuttle = moment().add(timeForNextShuttle, "minutes");
+
+

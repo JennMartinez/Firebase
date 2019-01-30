@@ -5,26 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Space Station</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>    
-<link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>  
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
 </head>
 <body>
-        <div class="heading">
-            <br>
-            <h1 class="text-center">Take Off!</h1>
-        </div>
-        <br><br>
-        <h4>Current Shuttle Schedule</h4>
+
+    <div class="containers">
+        <img src="assets/images/space9.jpg" width="1450" height="325"  alt="space">
+        <div class="centered">Space Shuttle Launch</div>
+    </div>
+      <div>
+        <h4>Current Space Shuttle Schedule</h4>
         <div class="container">
                 <br/>
             <table class="table">
                 <!-- Creates the headings for each column -->
                 <thead>
                   <tr>
-                    <th scope="col-sm-1">Shuttle Name</th>
+                    <th scope="col-sm-1">Space Shuttle Name</th>
                     <th scope="col-sm-2">Destination</th>
                     <th scope="col-sm-3">Frequency (min)</th>
                     <th scope="col-sm-4">Next Arrival</th>
@@ -35,32 +37,32 @@
                 <tbody id="rows"></tbody>
             </table>
         <br><br>
-        <div class="card-header">Add Shuttle</div>
+        <div class="card-header">Add Space Shuttle</div>
         <div class="card-body">
             <form role="form">
                     <div class="form-group row">
-                      <label for="time-input">Shuttle Time</label>
-                      <input class="form-control" id="time-input" type="text" />
+                      <label for="name-input">Space Shuttle Name</label>
+                      <input class="form-control" id="name-input" type="text" />
                     </div>
                     <div class="form-group row">
                       <label for="destination-input">Destination</label>
                       <input class="form-control" id="destination-input" type="text" />
                     </div>
                     <div class="form-group row">
-                      <label for="first-input">First Shuttle Time (HH:mm Military Time)</label>
-                      <input class="form-control" id="first-input" type="text" />
+                      <label for="time-input">First Space Shuttle Time (HH:mm Military Time)</label>
+                      <input class="form-control" id="time-input" type="text" />
                     </div>
                     <div class="form-group row">
                       <label for="frequency-input">Frequency (min)</label>
                       <input class="form-control" id="frequency-input" type="text"></input>
                     </div>
-                    <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+                    <button class="btn btn-default" id="add-shuttle" type="submit">Launch</button>
                   </form>
         </div>
         </div>        
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="firebase.js"></script>
+      </div>
+  
+    <script src="assets/javascript/firebase.js"></script>
 
 </body>
 </html>
