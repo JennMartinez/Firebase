@@ -79,11 +79,10 @@ var nextShuttle = frequency - lastShuttleA;
 var nextShuttle = presentTime.add(nextShuttle, "minutes");
 
 // Converts into military time //
-var militaryTime = nextShuttle.format("HH:mm");
+var firstShuttle = nextShuttle.format("HH:mm");
 
 // Displays input values on the scree //
 $("#rows").append("<tr><td>" + (snapshot.val().nameFirebase) + "</td><td>" + (snapshot.val().destinationFirebase) 
 + "</td><td>" + (snapshot.val().firstShuttleFirebase) + "</td><td>" + (snapshot.val().frequencyFirebase) + "</td><td>" + (snapshot.val().nextShuttle) + "</td></tr>");
 })
 
-//  Need to clear input fields after click launch button //
