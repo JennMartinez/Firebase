@@ -85,3 +85,5 @@ var militaryTime = nextShuttle.format("HH:mm");
 $("#rows").append("<tr><td>" + (snapshot.val().nameFirebase) + "</td><td>" + (snapshot.val().destinationFirebase) 
 + "</td><td>" + (snapshot.val().firstShuttleFirebase) + "</td><td>" + (snapshot.val().frequencyFirebase) + "</td><td>" + (snapshot.val().nextShuttle) + "</td></tr>");
 })
+
+//  Need to clear input fields after click launch button //
