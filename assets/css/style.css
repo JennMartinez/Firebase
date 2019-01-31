@@ -15,17 +15,13 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(0, 204, 255);
-    font-size: 40px;
-    /* text-shadow:
-		-1px -1px 0 rgba(255, 255, 255, 0.932),
-        1px -1px 0 rgba(255, 255, 255, 0.932),
-        -1px 1px 0 rgba(255, 255, 255, 0.932),
-        1px 1px 0 rgba(255, 255, 255, 0.932); */
-        text-shadow:
-    -1px -1px 0 grey,
-    1px -1px 0 grey,
-    -1px 1px 0 grey,
-    1px 1px 0 grey;
+    font-size: 47px;
+    text-shadow:
+        -1px -1px 0 grey,
+        1px -1px 0 grey,
+        -1px 1px 0 grey,
+        1px 1px 0 grey;
+    letter-spacing: 7px;
 }
 
 h4 {
@@ -36,6 +32,7 @@ h4 {
     1px -1px 0 grey,
     -1px 1px 0 grey,
     1px 1px 0 grey;
+    font-size: 29px;
 }
 
 .form-control {
@@ -60,7 +57,7 @@ h4 {
 .card-header {
     color: rgb(0, 204, 255);
     text-align: center;
-    font-size: 24px;
+    font-size: 29px;
     text-shadow:
     -1px -1px 0 grey,
     1px -1px 0 grey,
@@ -70,5 +67,12 @@ h4 {
 
 .table {
     color: rgb(0, 204, 255);
+    font-size: 20px;
+}
+
+#rows {
+    font-size: 30px;
+    font-family: 'Libre Barcode 39 Text', cursive; 
+    color: grey;   
 }
 

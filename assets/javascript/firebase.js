@@ -22,6 +22,11 @@ var frequency = 0;
 $("#add-shuttle").on("click", function(event) {
     event.preventDefault();
 
+// Clears and resets the input fields after launch button is clicked //
+    $("#add-shuttle").click(function () {
+        $("form").trigger("reset");
+    });
+
 
 name = $("#name-input")
     .val()
@@ -59,29 +64,30 @@ destination = snapshot.val().destination;
 firstShuttle = snapshot.val().firstShuttle;
 frequency = snapshot.val().frequency;
 
-// Moment that is used to calculate the Minutes away and Frequency of each shuttle //
-// // Initial arrival time //
+// // Moment that is used to calculate the Minutes away and Frequency of each shuttle //
+// // // Initial arrival time //
 var firstShuttleTimeConverted = moment(firstShuttle, "HH:mm");
 
-// // Present Time //
+// // // Present Time //
 var presentTime = moment();
 
-// // Difference between the Shuttle Times //
+// // // Difference between the Shuttle Times //
 var diffTime = presentTime.diff(moment(firstShuttleTimeConverted), "minutes");
 
-// // Frequency of Shuttles //
-var lastShuttleA = firstShuttle % frequency;
+// // // Frequency of Shuttles //
+var lastShuttleA = diffTime % frequency;
 
-// // Minutes that shuttle is Away //
+// // // Minutes that shuttle is Away //
 var nextShuttle = frequency - lastShuttleA;
 
-// Next shuttle arrival //
+// // Next shuttle arrival //
 var nextShuttle = presentTime.add(nextShuttle, "minutes");
 
-// Converts into military time //
+// // Converts into military time //
 var firstShuttle = nextShuttle.format("HH:mm");
+console.log(firstShuttle);
 
-// Displays input values on the scree //
+// Displays input values on the screen under schedule //
 $("#rows").append("<tr><td>" + (snapshot.val().nameFirebase) + "</td><td>" + (snapshot.val().destinationFirebase) 
 + "</td><td>" + (snapshot.val().firstShuttleFirebase) + "</td><td>" + (snapshot.val().frequencyFirebase) + "</td><td>" + (snapshot.val().nextShuttle) + "</td></tr>");
 })
