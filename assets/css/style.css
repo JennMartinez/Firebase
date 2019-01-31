@@ -6,7 +6,7 @@ body {
 .containers {
     position: relative;
     text-align: center;
-    color: white;
+    /* color: grey; */
 }
 
 .centered {
@@ -15,7 +15,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(0, 204, 255);
-    font-size: 47px;
+    font-size: 57px;
     text-shadow:
         -1px -1px 0 grey,
         1px -1px 0 grey,
@@ -27,12 +27,8 @@ body {
 h4 {
     text-align: center;
     color: rgb(0, 204, 255);
-    text-shadow:
-    -1px -1px 0 grey,
-    1px -1px 0 grey,
-    -1px 1px 0 grey,
-    1px 1px 0 grey;
-    font-size: 29px;
+    font-size: 49px;
+    font-family: 'Libre Barcode 39 Text', cursive; 
 }
 
 .form-control {
@@ -57,12 +53,8 @@ h4 {
 .card-header {
     color: rgb(0, 204, 255);
     text-align: center;
-    font-size: 29px;
-    text-shadow:
-    -1px -1px 0 grey,
-    1px -1px 0 grey,
-    -1px 1px 0 grey,
-    1px 1px 0 grey;
+    font-size: 49px;
+    font-family: 'Libre Barcode 39 Text', cursive; 
 }
 
 .table {

@@ -14,19 +14,32 @@ var database = firebase.database();
 // Variables //
 // Values pulling and pushing from database(Firebase) //
 
+
+// window.onload=function(){
+//     document.getElementById("myAudio").play();
+//   }
+
 var name = "";
 var destination = "";
 var firstShuttle = "";
 var frequency = 0;
 
+// Sound Effects //
+var x = document.getElementById("myAudio");
+
+function playAudio() {
+     x.play();
+}
+
+// Launch button adds input form to the table //
 $("#add-shuttle").on("click", function(event) {
     event.preventDefault();
+    playAudio();
 
 // Clears and resets the input fields after launch button is clicked //
     $("#add-shuttle").click(function () {
         $("form").trigger("reset");
     });
-
 
 name = $("#name-input")
     .val()

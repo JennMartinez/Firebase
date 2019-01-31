@@ -12,3 +12,5 @@ Instruction:
 - There are five columns of information that will display for each space shuttle, "Space Shuttle Name," "Destination," "Frequency," "Next Arrival," and "Light Years Away."
 
 - The  "Append Space Shuttle" input fields allow the user to create as many space shuttle schedules as they choose, which will all display in the "Space Shuttle Schedule" as described.
+
+- There are sound effects that begin to play when the user enters the site.
