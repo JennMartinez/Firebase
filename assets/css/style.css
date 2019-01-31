@@ -6,7 +6,7 @@ body {
 .containers {
     position: relative;
     text-align: center;
-    /* color: grey; */
+    color: white;
 }
 
 .centered {

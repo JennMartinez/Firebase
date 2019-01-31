@@ -13,12 +13,6 @@ var database = firebase.database();
 
 // Variables //
 // Values pulling and pushing from database(Firebase) //
-
-
-// window.onload=function(){
-//     document.getElementById("myAudio").play();
-//   }
-
 var name = "";
 var destination = "";
 var firstShuttle = "";
@@ -35,11 +29,6 @@ function playAudio() {
 $("#add-shuttle").on("click", function(event) {
     event.preventDefault();
     playAudio();
-
-// Clears and resets the input fields after launch button is clicked //
-    $("#add-shuttle").click(function () {
-        $("form").trigger("reset");
-    });
 
 name = $("#name-input")
     .val()
@@ -76,6 +65,12 @@ name = snapshot.val().name;
 destination = snapshot.val().destination;
 firstShuttle = snapshot.val().firstShuttle;
 frequency = snapshot.val().frequency;
+
+
+// Clears and resets the input fields after launch button is clicked //
+$("#add-shuttle").click(function () {
+    $("form").trigger("reset");
+});
 
 // // Moment that is used to calculate the Minutes away and Frequency of each shuttle //
 // // // Initial arrival time //
