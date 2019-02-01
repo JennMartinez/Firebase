@@ -60,6 +60,7 @@ h4 {
 .table {
     color: rgb(0, 204, 255);
     font-size: 20px;
+    text-align: center;
 }
 
 #rows {

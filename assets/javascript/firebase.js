@@ -1,4 +1,4 @@
-// Initialize Firebase
+// Initialize Firebase //
 var config = {
     apiKey: "AIzaSyCizBIOPxL0qehK5ShTBcBYH_pJ-0NyQ5E",
     authDomain: "shuttle-scheduler-13d90.firebaseapp.com",
@@ -17,6 +17,7 @@ var name = "";
 var destination = "";
 var firstShuttle = "";
 var frequency = 0;
+var lightYears = 0;
 
 // Sound Effects //
 var x = document.getElementById("myAudio");
@@ -24,6 +25,22 @@ var x = document.getElementById("myAudio");
 function playAudio() {
      x.play();
 }
+
+// Function that converts the time and displays the heading, "Light Years Away" //
+function calculateLightYearsTime(firstTrain, freq) {
+    var f = Number(freq);
+    console.log("firstTrain: " + firstTrain + " freq: " + f);
+    var convertStartTime = moment(firstTrain, "HH:mm").format("X") / 60;
+    var currentTime = moment().format("X") / 60;
+    console.log(currentTime);
+    var timeDifference = currentTime - convertStartTime;
+    var shuttleArrival = Math.floor(timeDifference / f);
+    var lastShuttle = (convertStartTime + (shuttleArrival * f)) * 60;
+    var nextShuttle = (lastShuttle / 60) + f;
+    console.log(nextShuttle);
+    console.log(Math.round(nextShuttle - currentTime));
+    return Math.round(nextShuttle - currentTime);   
+};
 
 // Launch button adds input form to the table //
 $("#add-shuttle").on("click", function(event) {
@@ -55,48 +72,28 @@ console.log(frequency);
         destinationFirebase: destination,
         firstShuttleFirebase: firstShuttle,
         frequencyFirebase: frequency,
+        lightYearsFirebase: calculateLightYearsTime(firstShuttle, frequency)
     });
 });
 
 database.ref().on("child_added", function(snapshot) {
 console.log(snapshot.val());    
 
-name = snapshot.val().name;
-destination = snapshot.val().destination;
-firstShuttle = snapshot.val().firstShuttle;
-frequency = snapshot.val().frequency;
-
+name = snapshot.val().nameFirebase;
+destination = snapshot.val().destinationFirebase;
+firstShuttle = snapshot.val().firstShuttleFirebase;
+frequency = snapshot.val().frequencyFirebase;
+lightYears = snapshot.val().lightYearsFirebase;
+console.log("destination: " + destination);
 
 // Clears and resets the input fields after launch button is clicked //
 $("#add-shuttle").click(function () {
     $("form").trigger("reset");
 });
 
-// // Moment that is used to calculate the Minutes away and Frequency of each shuttle //
-// // // Initial arrival time //
-var firstShuttleTimeConverted = moment(firstShuttle, "HH:mm");
-
-// // // Present Time //
-var presentTime = moment();
-
-// // // Difference between the Shuttle Times //
-var diffTime = presentTime.diff(moment(firstShuttleTimeConverted), "minutes");
-
-// // // Frequency of Shuttles //
-var lastShuttleA = diffTime % frequency;
-
-// // // Minutes that shuttle is Away //
-var nextShuttle = frequency - lastShuttleA;
-
-// // Next shuttle arrival //
-var nextShuttle = presentTime.add(nextShuttle, "minutes");
-
-// // Converts into military time //
-var firstShuttle = nextShuttle.format("HH:mm");
-console.log(firstShuttle);
-
 // Displays input values on the screen under schedule //
 $("#rows").append("<tr><td>" + (snapshot.val().nameFirebase) + "</td><td>" + (snapshot.val().destinationFirebase) 
-+ "</td><td>" + (snapshot.val().firstShuttleFirebase) + "</td><td>" + (snapshot.val().frequencyFirebase) + "</td><td>" + (snapshot.val().nextShuttle) + "</td></tr>");
++ "</td><td>" + (snapshot.val().frequencyFirebase) + "</td><td>" + (snapshot.val().firstShuttleFirebase) + "</td><td>"
++ (snapshot.val().lightYearsFirebase) + "</td></tr>");
 })
 
